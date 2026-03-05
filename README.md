@@ -9,12 +9,12 @@ In details, this package implement the following architecture:
 ![Architecture implemented in this package.](doc/diag_mlp.png "Architecture implemented in this package. ")
 
 
-Where all the connections between the blocks are made with objects from the [multicontact-API](https://github.com/loco-3d/multicontact-api) package. Thanks to this, we can have a modular architecture with different methods for solving each blocks but with an unified API. 
+Where all the connections between the blocks are made with objects from the [multicontact-API](https://github.com/Unity-Billal-mesloub/multicontact-api) package. Thanks to this, we can have a modular architecture with different methods for solving each blocks but with an unified API. 
 
-The multicontact-locomotion-planning package doesn't implement any of the solvers/methods for any of the blocks but it contains wrapper for the different blocks of the framework and script to automatically formulate problems, retrieve and store solutions such that the input and output of each wrapper is an object from the [multicontact-API](https://github.com/loco-3d/multicontact-api) package. 
+The multicontact-locomotion-planning package doesn't implement any of the solvers/methods for any of the blocks but it contains wrapper for the different blocks of the framework and script to automatically formulate problems, retrieve and store solutions such that the input and output of each wrapper is an object from the [multicontact-API](https://github.com/Unity-Billal-mesloub/multicontact-api) package. 
 Then it implement the connection between each block, along with a lot of helpers for visualization or exports. 
 
-This wrappers are python script that take a user input or an object from the  [multicontact-API](https://github.com/loco-3d/multicontact-api) package, generate a generic problem from the input and call the API of a specific solver. Then it retrieve the solution from the solver and correctly store it in a [multicontact-API](https://github.com/loco-3d/multicontact-api) object. 
+This wrappers are python script that take a user input or an object from the  [multicontact-API](https://github.com/Unity-Billal-mesloub/multicontact-api) package, generate a generic problem from the input and call the API of a specific solver. Then it retrieve the solution from the solver and correctly store it in a [multicontact-API](https://github.com/Unity-Billal-mesloub/multicontact-api) object. 
 
 The goal of this framework is to be modular, allowing the user to select a method for each of the subproblem or add a wrapper for any new method from the state-of-the-art solving one of this subproblem and connect it seamlessly to the rest of the framework. 
 
@@ -33,12 +33,12 @@ This package rely on a lot of optionnal packages, see the section 'Available met
 
 ## Install depencies from sources : 
 
-Follow the instruction from https://github.com/loco-3d/multicontact-api
+Follow the instruction from https://github.com/Unity-Billal-mesloub/multicontact-api
 
 ## Installation procedure : 
 Once the depencies are correctly installed, clone the repository :
 ``` 
-git clone --recursive https://github.com/loco-3d/multicontact-locomotion-planning.git
+git clone --recursive https://github.com/Unity-Billal-mesloub/multicontact-locomotion-planning.git
 ``` 
 And install it:
 
@@ -52,7 +52,7 @@ cmake -DCMAKE_BUILD_TYPE=RELEASE -DPYTHON_EXECUTABLE=$(which python3) .. ; make 
 
 ## Basic usage:
 
-The main class of this package is https://github.com/loco-3d/multicontact-locomotion-planning/blob/master/python/loco_planner.py .This script call all the required solver to compute the complete framework as shown in the figure above. You have to call this script with an additional argument `DEMO_NAME`.
+The main class of this package is https://github.com/Unity-Billal-mesloub/multicontact-locomotion-planning/blob/main/python/loco_planner.py .This script call all the required solver to compute the complete framework as shown in the figure above. You have to call this script with an additional argument `DEMO_NAME`.
 A main script is also available, that take care of running the rquired background process (gepetto-viewer and hpp-rbprm corbaserver) and stopping them after the end of the script. To use it simply run: 
 
 ```python
@@ -67,31 +67,31 @@ The value of `DEMO_NAME` can be the name of any file inside the folder python/ml
 The user should never modify the main classes (loco_planner.py) but only the various configuration files. When launching the main script, it load three configuration files in the following order:
 
 * mlp/config.py : this is the main configuration file, it can be edited to change:
-  * The default method used to solve each subproblem https://github.com/loco-3d/multicontact-locomotion-planning/blob/master/python/mlp/config.py#L23-L29
-  * The various path for all the external files used https://github.com/loco-3d/multicontact-locomotion-planning/blob/master/python/mlp/config.py#L36-L48
-  * Enabling or disabling the various export https://github.com/loco-3d/multicontact-locomotion-planning/blob/master/python/mlp/config.py#L51-L62
-  * Enabling or disabling the display of several items https://github.com/loco-3d/multicontact-locomotion-planning/blob/master/python/mlp/config.py#L65-L80
+  * The default method used to solve each subproblem https://github.com/Unity-Billal-mesloub/multicontact-locomotion-planning/blob/main/python/mlp/config.py#L23-L29
+  * The various path for all the external files used https://github.com/Unity-Billal-mesloub/multicontact-locomotion-planning/blob/main/python/mlp/config.py#L36-L48
+  * Enabling or disabling the various export https://github.com/Unity-Billal-mesloub/multicontact-locomotion-planning/blob/main/python/mlp/config.py#L51-L62
+  * Enabling or disabling the display of several items https://github.com/Unity-Billal-mesloub/multicontact-locomotion-planning/blob/main/python/mlp/config.py#L65-L80
   * Various default setting for each specific methods
 * mlp/demo_configs/common_*.py : This file contains all the robot-specific settings:
-  * The rbprm Robot class related to this robot https://github.com/loco-3d/multicontact-locomotion-planning/blob/master/python/mlp/demo_configs/common_talos.py#L1
-  * The mass of the robot https://github.com/loco-3d/multicontact-locomotion-planning/blob/master/python/mlp/demo_configs/common_talos.py#L2
-  * Default duration of each contact phases https://github.com/loco-3d/multicontact-locomotion-planning/blob/master/python/mlp/demo_configs/common_talos.py#L5-L11
-  * Various gains value and task priority used by the wholeBody script https://github.com/loco-3d/multicontact-locomotion-planning/blob/master/python/mlp/demo_configs/common_talos.py#L17-L36
-  * Default setting for the end-effector trajectory generation https://github.com/loco-3d/multicontact-locomotion-planning/blob/master/python/mlp/demo_configs/common_talos.py#L43-L47
+  * The rbprm Robot class related to this robot https://github.com/Unity-Billal-mesloub/multicontact-locomotion-planning/blob/main/python/mlp/demo_configs/common_talos.py#L1
+  * The mass of the robot https://github.com/Unity-Billal-mesloub/multicontact-locomotion-planning/blob/main/python/mlp/demo_configs/common_talos.py#L2
+  * Default duration of each contact phases https://github.com/Unity-Billal-mesloub/multicontact-locomotion-planning/blob/main/python/mlp/demo_configs/common_talos.py#L5-L11
+  * Various gains value and task priority used by the wholeBody script https://github.com/Unity-Billal-mesloub/multicontact-locomotion-planning/blob/main/python/mlp/demo_configs/common_talos.py#L17-L36
+  * Default setting for the end-effector trajectory generation https://github.com/Unity-Billal-mesloub/multicontact-locomotion-planning/blob/main/python/mlp/demo_configs/common_talos.py#L43-L47
 * mlp/demo_configs/DEMO_NAME.py : This last file contains all the fine tuning specific to each scenario.
-  * Select the robot used https://github.com/loco-3d/multicontact-locomotion-planning/blob/master/python/mlp/demo_configs/talos_circle.py#L2
-  * If using rbprm to solver the contact planning, it should specify the folder inside hpp-rbprm-corba/script/scenario that contain the script https://github.com/loco-3d/multicontact-locomotion-planning/blob/master/python/mlp/demo_configs/talos_circle.py#L3
-  * Set the name of the environment file, inside the package hpp-environments https://github.com/loco-3d/multicontact-locomotion-planning/blob/master/python/mlp/demo_configs/talos_circle.py#L4
+  * Select the robot used https://github.com/Unity-Billal-mesloub/multicontact-locomotion-planning/blob/main/python/mlp/demo_configs/talos_circle.py#L2
+  * If using rbprm to solver the contact planning, it should specify the folder inside hpp-rbprm-corba/script/scenario that contain the script https://github.com/Unity-Billal-mesloub/multicontact-locomotion-planning/blob/main/python/mlp/demo_configs/talos_circle.py#L3
+  * Set the name of the environment file, inside the package hpp-environments https://github.com/Unity-Billal-mesloub/multicontact-locomotion-planning/blob/main/python/mlp/demo_configs/talos_circle.py#L4
   * Then, it can change the value of any the values defined in one of the previous configuration files
   
 #### External configuration file for specific solvers:
 
-Some solvers called as external library by this package may require other configuration files, they are stored in specific folders (eg. momentumopt_configs for momentumopt solver). The file(s) used by this solvers are choosen inside the  mlp/demo_configs/DEMO_NAME.py configuration file (https://github.com/loco-3d/multicontact-locomotion-planning/blob/master/scripts/mlp/demo_configs/talos_circle.py#L1).
+Some solvers called as external library by this package may require other configuration files, they are stored in specific folders (eg. momentumopt_configs for momentumopt solver). The file(s) used by this solvers are choosen inside the  mlp/demo_configs/DEMO_NAME.py configuration file (https://github.com/Unity-Billal-mesloub/multicontact-locomotion-planning/blob/main/scripts/mlp/demo_configs/talos_circle.py#L1).
 
 ## Load motion from files:
 *DEPRECATED*
 
-The script https://github.com/loco-3d/multicontact-locomotion-planning/blob/master/scripts/load_motion_from_files.py can load a motion from a `*_COM.cs` and a `*.npz` file. 
+The script https://github.com/Unity-Billal-mesloub/multicontact-locomotion-planning/blob/main/scripts/load_motion_from_files.py can load a motion from a `*_COM.cs` and a `*.npz` file. 
 
 * Edit the variables `path`, `npzFile` and `csFile` inside the script
 * run `gepetto-gui` in a separate terminal
@@ -105,20 +105,20 @@ Currently supported method for each subproblem, you need to install the packages
 
 ## Contact generation : 
 
-* RBPRM (https://github.com/humanoid-path-planner/hpp-rbprm-corba#installation-from-binary-package-repository)
+* RBPRM (https://github.com/Unity-Billal-mesloub/hpp-rbprm-corba#installation-from-binary-package-repository)
 * SL1M (https://gepgitlab.laas.fr/loco-3d/sl1m)
 * Manually defined (helper methods are available to easily define a gait or a sequence of effector positions)
 
 ## Centroidal trajectory optimization : 
 
-* momentumopt (https://github.com/machines-in-motion/kino_dynamic_opt)
+* momentumopt (https://github.com/Unity-Billal-mesloub/kino_dynamic_opt)
 * CROC (https://hal.archives-ouvertes.fr/hal-01726155), included in RBPRM
 * 2-PAC (quasi-static) (https://hal.archives-ouvertes.fr/hal-01609055) included in RBPRM
 
 ## Wholebody motion generation :
 
-* TSID (https://github.com/stack-of-tasks/tsid)
-* CROCODDYL (Work in progress) (https://github.com/loco-3d/crocoddyl)
+* TSID (https://github.com/Unity-Billal-mesloub/tsid)
+* CROCODDYL (Work in progress) (https://github.com/Unity-Billal-mesloub/crocoddyl)
 
 ## Effector trajectories :
 
@@ -128,14 +128,14 @@ Currently supported method for each subproblem, you need to install the packages
 
 ## Visualization : 
 
-* gepetto-viewer (https://github.com/Gepetto/gepetto-viewer-corba#setup-from-robotpkg-apt-binary-package-repository)
+* gepetto-viewer (https://github.com/Unity-Billal-mesloub/gepetto-viewer-corba#setup-from-robotpkg-apt-binary-package-repository)
 
 ## Export : 
 
-* Blender (with plugin https://github.com/Gepetto/gepetto-viewer-corba/tree/master/blender)
+* Blender (with plugin https://github.com/Unity-Billal-mesloub/gepetto-viewer-corba/tree/main/blender)
 * Gazebo (basic joint-trajectory export)
 * OpenHRP (only for HRP-2 robot)
-* npz numpy archive (containing all the datas of the wholebody motion) (see https://github.com/MeMory-of-MOtion/docker-loco3d#details-on-the-npz-archive  for details)
+* npz numpy archive (containing all the datas of the wholebody motion) (see https://github.com/Unity-Billal-mesloub/docker-loco3d#details-on-the-npz-archive  for details)
 
 # Reactive planning (Work In Progess):
 
