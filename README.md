@@ -106,7 +106,7 @@ Currently supported method for each subproblem, you need to install the packages
 ## Contact generation : 
 
 * RBPRM (https://github.com/Unity-Billal-mesloub/hpp-rbprm-corba#installation-from-binary-package-repository)
-* SL1M (https://gepgitlab.laas.fr/loco-3d/sl1m)
+* SL1M (https://gepgitlab.laas.fr/Unity-Billal-mesloub/sl1m)
 * Manually defined (helper methods are available to easily define a gait or a sequence of effector positions)
 
 ## Centroidal trajectory optimization : 
